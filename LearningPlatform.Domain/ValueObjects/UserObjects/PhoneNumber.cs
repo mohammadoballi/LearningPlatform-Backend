@@ -15,7 +15,7 @@ namespace LearningPlatform.Domain.ValueObjects.UserObjects
             if (string.IsNullOrWhiteSpace(value))
                 throw new InvalidPhoneNumberException("Phone number cannot be empty.");
 
-            if (!value.StartsWith("+")|| !value.StartsWith("00"))
+            if (!(value.StartsWith("+") || value.StartsWith("00")))
                 throw new InvalidPhoneNumberException("Phone number Format wrnog");
 
             Value = value;

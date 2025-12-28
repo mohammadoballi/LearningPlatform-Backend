@@ -1,4 +1,5 @@
 ﻿using LearningPlatform.Domain.Exceptions;
+using LearningPlatform.Domain.Exceptions.UserExceptions;
 
 namespace LearningPlatform.Domain.ValueObjects.UserObjects;
 

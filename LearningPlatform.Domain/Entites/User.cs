@@ -30,21 +30,30 @@ public sealed class User
 
     public void Activate()
     {
-        IsActive = false;
+        IsActive = true;
     }
 
     public void ChangeEmail(Email newEmail)
     {
+        if (!IsActive)
+            throw new Exceptions.UserExceptions.UserInactiveException("Cannot change email of an inactive user.");
+
         Email = newEmail;
     }
 
     public void ChangePhoneNumber(PhoneNumber newPhone)
     {
+        if (!IsActive)
+            throw new Exceptions.UserExceptions.UserInactiveException("Cannot change phone number of an inactive user.");
+
         Phone = newPhone;
     }
 
     public void ChangeFullName(FullName newFullName)
     {
+        if (!IsActive)
+            throw new Exceptions.UserExceptions.UserInactiveException("Cannot change full name of an inactive user.");
+
         FullName = newFullName;
     }
 }
