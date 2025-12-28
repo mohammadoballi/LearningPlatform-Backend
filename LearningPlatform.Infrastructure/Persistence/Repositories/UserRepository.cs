@@ -1,5 +1,6 @@
 ﻿using LearningPlatform.Application.Abstractions.Repositories;
 using LearningPlatform.Application.Abstractions.Repositories.UserRepos;
+using LearningPlatform.Application.Features.Users.Queries.GetAll;
 using LearningPlatform.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,4 +32,10 @@ public sealed class UserRepository : IUserRepository
         return await _context.Users
             .FirstOrDefaultAsync(u => u.Email.Value == email, ct);
     }
+
+    public async Task<List<User>> GetAllAsync(GetAllQuery request ,CancellationToken ct)
+    {
+        return await _context.Users.ToListAsync(ct);
+    }
+
 }

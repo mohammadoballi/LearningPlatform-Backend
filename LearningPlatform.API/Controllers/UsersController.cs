@@ -1,5 +1,6 @@
 ﻿using LearningPlatform.Application.Features.Users.Commands.ActivateUser;
 using LearningPlatform.Application.Features.Users.Commands.CreateUser;
+using LearningPlatform.Application.Features.Users.Queries.GetAll;
 using LearningPlatform.Application.Features.Users.Queries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -52,5 +53,16 @@ namespace LearningPlatform.API.Controllers
             return Ok(result);
         }
 
-}
+        [HttpGet]
+        public async Task<IActionResult> GetAll ()
+        {
+            var result = await _mediator.Send(new GetAllQuery());
+
+            if (result is null)
+                return NotFound();
+
+            return Ok(result);
+        }
+
+    }
 }

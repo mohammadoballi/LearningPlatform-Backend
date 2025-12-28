@@ -1,5 +1,6 @@
 ﻿using LearningPlatform.Application.Common.Results;
 using LearningPlatform.Application.Features.Users.Commands.CreateUser;
+using LearningPlatform.Application.Features.Users.Queries.GetAll;
 using LearningPlatform.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,6 @@ namespace LearningPlatform.Application.Abstractions.Repositories.UserRepos
     {
         Task AddAsync(User user, CancellationToken token);
         Task<User> GetByIdAsync(Guid UserId, CancellationToken token);
+        Task<List<User>> GetAllAsync(GetAllQuery request, CancellationToken ct);
     }
 }
